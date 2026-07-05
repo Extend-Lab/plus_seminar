@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PLUS Seminar 2026 | Agents in Collaboration</title>
+<meta name="description" content="PLUS Seminar 2026: Agents in Collaboration, Physical AI and the Future of Multi-Robot Systems.">
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<style>
+  :root {
+    --ink: #122129;
+    --muted: #61727a;
+    --deep: #102f3c;
+    --teal: #0e8a8a;
+    --mint: #63c7b2;
+    --orange: #d86f2a;
+    --amber: #efb64c;
+    --paper: #f6fbfa;
+    --line: rgba(14, 138, 138, 0.18);
+    --shadow: 0 22px 58px rgba(18, 33, 41, 0.15);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    color: var(--ink);
+    background:
+      linear-gradient(90deg, rgba(14, 138, 138, 0.045) 1px, transparent 1px),
+      linear-gradient(0deg, rgba(14, 138, 138, 0.04) 1px, transparent 1px),
+      #eef7f5;
+    background-size: 84px 84px;
+    font-family: "Avenir Next", "SF Pro Display", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: linear-gradient(90deg, rgba(16, 47, 60, 0.98), rgba(14, 138, 138, 0.98));
+    box-shadow: 0 12px 28px rgba(18, 33, 41, 0.2);
+    backdrop-filter: blur(14px);
+  }
+
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: min(1180px, calc(100% - 2rem));
+    min-height: 4.2rem;
+    margin: 0 auto;
+  }
+
+  .wordmark {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .wordmark strong { font-size: 1.35rem; }
+  .wordmark span {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    gap: 0.8rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .menu a {
+    display: inline-flex;
+    padding: 0.42rem 0.12rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 0.86rem;
+    font-weight: 760;
+  }
+
+  .menu a:hover { color: #fff; }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+    min-height: 530px;
+    padding: 4.8rem 1rem 2.5rem;
+    background:
+      linear-gradient(90deg, rgba(246, 251, 250, 0.98) 0%, rgba(246, 251, 250, 0.86) 42%, rgba(246, 251, 250, 0.2) 100%),
+      linear-gradient(0deg, rgba(16, 47, 60, 0.18), rgba(16, 47, 60, 0.02)),
+      url("assets/plus-seminar/hero.png") right center / cover no-repeat;
+  }
+
+  .hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(32deg, transparent 0 22%, rgba(216, 111, 42, 0.15) 22% 22.35%, transparent 22.35%),
+      linear-gradient(144deg, transparent 0 38%, rgba(14, 138, 138, 0.18) 38% 38.32%, transparent 38.32%),
+      linear-gradient(106deg, transparent 0 55%, rgba(99, 199, 178, 0.2) 55% 55.32%, transparent 55.32%);
+    opacity: 0.9;
+    pointer-events: none;
+  }
+
+  .hero-inner,
+  .section-inner {
+    position: relative;
+    z-index: 1;
+    width: min(1180px, calc(100% - 2rem));
+    margin: 0 auto;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.44fr);
+    gap: 2rem;
+    align-items: end;
+  }
+
+  .logo-line {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1.25rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .logo-card {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.48rem;
+    min-height: 3rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--deep);
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-shadow: 0 1px 10px rgba(255, 255, 255, 0.84);
+  }
+
+  .logo-card img {
+    display: block;
+    width: auto;
+    height: 2.7rem;
+    max-width: none;
+    object-fit: contain;
+    filter: drop-shadow(0 5px 10px rgba(18, 33, 41, 0.12));
+  }
+
+  .logo-card span {
+    display: block;
+    line-height: 1.18;
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.48rem;
+    margin: 0 0 1rem;
+    padding: 0.52rem 0.74rem;
+    border-radius: 4px;
+    background: var(--deep);
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 850;
+    text-transform: uppercase;
+  }
+
+  .hero h1 {
+    max-width: 57rem;
+    margin: 0;
+    color: #0d2a36;
+    font-size: clamp(2.35rem, 5.7vw, 5.05rem);
+    line-height: 1;
+    letter-spacing: 0;
+  }
+
+  .subtitle {
+    max-width: 45rem;
+    margin: 1.1rem 0 0;
+    color: #405c64;
+    font-size: 1.12rem;
+    line-height: 1.6;
+  }
+
+  .actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+    margin-top: 1.55rem;
+  }
+
+  .button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    min-height: 2.72rem;
+    padding: 0.72rem 1rem;
+    border: 1px solid rgba(14, 138, 138, 0.22);
+    border-radius: 999px;
+    background: #fff;
+    color: var(--deep);
+    font-size: 0.9rem;
+    font-weight: 820;
+    box-shadow: 0 12px 24px rgba(18, 33, 41, 0.1);
+  }
+
+  .button.primary {
+    border-color: transparent;
+    background: linear-gradient(90deg, var(--orange), var(--teal));
+    color: #fff;
+  }
+
+  .fact-panel {
+    display: grid;
+    gap: 0.78rem;
+    margin-top: 2rem;
+    padding: 1.1rem;
+    border: 1px solid rgba(14, 138, 138, 0.18);
+    border-top: 5px solid var(--teal);
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.92);
+    box-shadow: var(--shadow);
+  }
+
+  .fact {
+    display: grid;
+    grid-template-columns: 1.4rem 1fr;
+    gap: 0.62rem;
+    align-items: start;
+    color: var(--muted);
+    font-size: 0.94rem;
+    line-height: 1.42;
+  }
+
+  .fact i { color: var(--teal); font-size: 1.08rem; }
+  .fact:nth-child(1) i,
+  .fact:nth-child(4) i { color: var(--orange); }
+  .fact strong { display: block; color: var(--ink); }
+
+  .section {
+    padding: 4.25rem 1rem;
+    background: #fff;
+  }
+
+  .section:nth-of-type(even) { background: #f4faf8; }
+
+  .section-heading {
+    max-width: 50rem;
+    margin-bottom: 1.85rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid var(--line);
+  }
+
+  .label {
+    margin: 0 0 0.6rem;
+    color: var(--orange);
+    font-size: 0.78rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .section-heading h2 {
+    margin: 0;
+    color: #0d2f3c;
+    font-size: clamp(1.75rem, 3vw, 2.65rem);
+    line-height: 1.04;
+    letter-spacing: 0;
+  }
+
+  .section-heading p {
+    margin: 0.65rem 0 0;
+    color: var(--muted);
+    font-size: 1rem;
+    line-height: 1.62;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.9fr) minmax(20rem, 0.64fr);
+    gap: 1rem;
+    align-items: start;
+  }
+
+  .copy {
+    margin: 0;
+    color: #405c64;
+    font-size: 1.02rem;
+    line-height: 1.75;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 0.62rem;
+  }
+
+  .stat {
+    min-height: 6.4rem;
+    padding: 0.78rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--paper);
+  }
+
+  .stat strong {
+    display: block;
+    color: var(--teal);
+    font-size: 1.72rem;
+    line-height: 1;
+  }
+
+  .stat span {
+    display: block;
+    margin-top: 0.5rem;
+    color: var(--muted);
+    font-size: 0.76rem;
+    line-height: 1.34;
+  }
+
+  .speaker-session {
+    display: grid;
+    gap: 1rem;
+    margin-top: 1.35rem;
+  }
+
+  .speaker-session:first-of-type {
+    margin-top: 0;
+  }
+
+  .speaker-session-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.78rem 1rem;
+    border: 1px solid var(--line);
+    border-left: 5px solid var(--teal);
+    border-radius: 6px;
+    background: linear-gradient(90deg, rgba(14, 138, 138, 0.1), rgba(216, 111, 42, 0.06));
+  }
+
+  .speaker-session-head h3 {
+    margin: 0;
+    color: #0f3441;
+    font-size: 1.02rem;
+    line-height: 1.22;
+  }
+
+  .speaker-session-head span {
+    color: var(--muted);
+    font-size: 0.82rem;
+    font-weight: 820;
+    text-align: right;
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .card {
+    min-height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 14px 32px rgba(18, 33, 41, 0.08);
+  }
+
+  .speaker-photo {
+    display: block;
+    width: min(62%, 9.6rem);
+    aspect-ratio: 1 / 1.14;
+    margin: 1.05rem auto 0;
+    object-fit: cover;
+    border: 5px solid #fff;
+    border-radius: 999px;
+    background: #dcefeb;
+    box-shadow: 0 0 0 2px rgba(14, 138, 138, 0.34), 0 18px 28px rgba(18, 33, 41, 0.12);
+  }
+
+  .card-body { padding: 1rem; }
+  .card h3 {
+    margin: 0;
+    color: #0f3441;
+    font-size: 1.02rem;
+    line-height: 1.22;
+  }
+
+  .affiliation {
+    margin: 0.28rem 0 0.62rem;
+    color: var(--teal);
+    font-size: 0.84rem;
+    font-weight: 820;
+  }
+
+  .position {
+    margin: 0.28rem 0 0;
+    color: #2f4a52;
+    font-size: 0.82rem;
+    font-weight: 820;
+    line-height: 1.35;
+  }
+
+  .topic-pill {
+    display: inline-flex;
+    margin: 0 0 0.72rem;
+    padding: 0.28rem 0.48rem;
+    border-radius: 999px;
+    background: rgba(216, 111, 42, 0.12);
+    color: #a64d18;
+    font-size: 0.72rem;
+    font-weight: 900;
+  }
+
+  .card p {
+    margin: 0;
+    color: var(--muted);
+    font-size: 0.86rem;
+    line-height: 1.55;
+  }
+
+  .modal-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.8rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 850;
+    cursor: pointer;
+  }
+
+  .agenda {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .session {
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: var(--shadow);
+  }
+
+  .session-title {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.8rem;
+    padding: 0.78rem 1rem;
+    background: linear-gradient(90deg, var(--deep), var(--teal));
+    color: #fff;
+    font-size: 0.9rem;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+
+  .session-title span {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 0.76rem;
+  }
+
+  .agenda-row {
+    display: grid;
+    grid-template-columns: 8rem minmax(0, 1fr) minmax(12rem, 0.56fr);
+    gap: 1rem;
+    padding: 0.95rem 1rem;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .agenda-row:last-child { border-bottom: 0; }
+  .slot { color: var(--orange); font-weight: 900; }
+  .agenda-topic { color: #173f4c; font-weight: 850; }
+  .who { color: var(--muted); line-height: 1.4; }
+
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .panel {
+    padding: 1.2rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: #fff;
+    box-shadow: 0 14px 32px rgba(18, 33, 41, 0.08);
+  }
+
+  .panel h3 {
+    margin: 0 0 0.72rem;
+    color: #0f3441;
+    font-size: 1.15rem;
+  }
+
+  .panel p {
+    margin: 0;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  .panel p + p {
+    margin-top: 0.85rem;
+  }
+
+  .venue-image {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin-bottom: 1rem;
+    border-radius: 6px;
+    object-fit: cover;
+    box-shadow: 0 14px 30px rgba(18, 33, 41, 0.12);
+  }
+
+  .venue-image.map {
+    object-fit: contain;
+    background: #eef7f5;
+  }
+
+  .icon-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .icon-item {
+    display: grid;
+    grid-template-columns: 2.35rem 1fr;
+    gap: 0.65rem;
+    align-items: start;
+    padding: 0.85rem;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--paper);
+  }
+
+  .icon-item i {
+    display: grid;
+    place-items: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 50%;
+    background: rgba(14, 138, 138, 0.1);
+    color: var(--teal);
+    font-size: 1.16rem;
+  }
+
+  .icon-item strong {
+    display: block;
+    color: #0f3441;
+    font-size: 0.92rem;
+    line-height: 1.26;
+  }
+
+  .icon-item span {
+    display: block;
+    margin-top: 0.24rem;
+    color: var(--muted);
+    font-size: 0.82rem;
+    line-height: 1.38;
+  }
+
+  .footer {
+    padding: 2.2rem 1rem;
+    border-top: 1px solid rgba(14, 138, 138, 0.26);
+    background: linear-gradient(90deg, rgba(16, 47, 60, 0.06), #f8fbfa 35%, rgba(216, 111, 42, 0.08));
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.86rem;
+  }
+
+  .footer strong { color: #0f3441; }
+  .footer small { display: block; margin-top: 0.55rem; line-height: 1.5; }
+
+  .modal {
+    width: min(860px, calc(100% - 2rem));
+    max-height: min(82vh, 760px);
+    padding: 0;
+    border: 0;
+    border-radius: 8px;
+    box-shadow: 0 32px 90px rgba(18, 33, 41, 0.32);
+  }
+
+  .modal::backdrop {
+    background: rgba(16, 47, 60, 0.66);
+    backdrop-filter: blur(4px);
+  }
+
+  .modal-shell {
+    display: grid;
+    max-height: min(82vh, 760px);
+    grid-template-rows: auto minmax(0, 1fr);
+    background: #fff;
+  }
+
+  .modal-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border-bottom: 1px solid var(--line);
+    background: linear-gradient(90deg, var(--deep), var(--teal));
+    color: #fff;
+  }
+
+  .modal-head h2 {
+    margin: 0;
+    font-size: 1.1rem;
+    line-height: 1.25;
+  }
+
+  .modal-close {
+    display: grid;
+    place-items: center;
+    width: 2.25rem;
+    height: 2.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    cursor: pointer;
+  }
+
+  .modal-body {
+    overflow-y: auto;
+    padding: 1.2rem;
+  }
+
+  .modal-body h3 {
+    margin: 1.1rem 0 0.42rem;
+    color: #0f3441;
+    font-size: 1rem;
+  }
+
+  .modal-body h3:first-child { margin-top: 0; }
+  .modal-body p {
+    margin: 0 0 0.88rem;
+    color: #405c64;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 920px) {
+    .nav { align-items: flex-start; flex-direction: column; padding: 0.9rem 0; }
+    .menu { justify-content: flex-start; }
+    .hero { min-height: auto; padding-top: 5rem; }
+    .hero-grid,
+    .about-grid,
+    .info-grid { grid-template-columns: 1fr; }
+    .card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @media (max-width: 640px) {
+    .actions { align-items: stretch; flex-direction: column; }
+    .logo-line { align-items: flex-start; flex-direction: column; }
+    .logo-card { justify-content: flex-start; }
+    .stat-grid,
+    .card-grid,
+    .icon-list { grid-template-columns: 1fr; }
+    .agenda-row { grid-template-columns: 1fr; gap: 0.34rem; }
+    .speaker-session-head {
+      align-items: flex-start;
+      flex-direction: column;
+    }
+
+    .speaker-session-head span {
+      text-align: left;
+    }
+  }
+</style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav" aria-label="PLUS Seminar navigation">
+      <a class="wordmark" href="./"><strong>PLUS Seminar 2026</strong></a>
+      <ul class="menu">
+        <li><a href="#about">About</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#agenda">Agenda</a></li>
+        <li><a href="#poster">Poster</a></li>
+        <li><a href="#venue">Venue & Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-inner">
+        <div class="hero-grid">
+          <div>
+            <div class="logo-line" aria-label="Participating institutions">
+              <span class="logo-card hkustgz"><img src="assets/plus-seminar/hkustgz-logo-cropped.png" alt="HKUST(GZ)"></span>
+              <span class="logo-card hkust"><img src="assets/plus-seminar/hkust-logo-cropped.png" alt="HKUST"></span>
+              <span class="logo-card cambridge"><img src="assets/plus-seminar/cambridge-logo-cropped.png" alt="University of Cambridge"></span>
+            </div>
+            <p class="kicker"><i class="bi bi-robot"></i> In-person seminar</p>
+            <h1>Agents in Collaboration</h1>
+            <p class="subtitle">Physical AI and the Future of Multi-Robot Systems</p>
+            <div class="actions">
+              <a class="button primary" href="#agenda"><i class="bi bi-calendar3"></i> View Agenda</a>
+              <a class="button" href="#poster"><i class="bi bi-easel2"></i> Call for Posters</a>
+            </div>
+          </div>
+
+          <aside class="fact-panel" aria-label="Event facts">
+            <div class="fact"><i class="bi bi-calendar-event"></i><span><strong>1 August 2026</strong>In-person seminar</span></div>
+            <div class="fact"><i class="bi bi-geo-alt-fill"></i><span><strong>E1, 4th Floor, DOIT Lab</strong>HKUST(GZ), 1st Duxue Road, Nansha, Guangzhou</span></div>
+            <div class="fact"><i class="bi bi-diagram-3"></i><span><strong>10 academic talks + 1 industry sharing</strong>Talks, Q&amp;A and collaboration discussion</span></div>
+            <div class="fact"><i class="bi bi-easel2"></i><span><strong>10 posters</strong>Poster session during lunch and coffee breaks</span></div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="label">Theme</p>
+          <h2>Physical AI for collaborative agents</h2>
+          <p>The seminar explores how robots, infrastructure systems and intelligent agents can perceive, model and act together in real-world environments.</p>
+        </div>
+        <div class="about-grid">
+          <p class="copy">This one-day seminar brings together researchers from HKUST(GZ), HKUST and the University of Cambridge to examine how physical AI can move collaborative agents from isolated demonstrations toward dependable action in real environments. Through academic talks, industry sharing, posters and chaired discussion, the program connects sensing, reasoning, simulation and deployment around a practical question: how can robots, infrastructure and intelligent systems learn to coordinate with greater trust, adaptability and impact?</p>
+          <div class="stat-grid">
+            <div class="stat"><strong>1</strong><span>day of in-person talks and discussion</span></div>
+            <div class="stat"><strong>10+1</strong><span>academic talks plus industry sharing</span></div>
+            <div class="stat"><strong>10</strong><span>posters for exchange and collaboration</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="speakers">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="label">Speakers</p>
+          <h2>Invited researchers</h2>
+          <p>Speakers are grouped by the morning and afternoon sessions so the profiles align directly with the tentative agenda. Click any profile for the longer bio notes.</p>
+        </div>
+        <div class="speaker-session">
+          <div class="speaker-session-head">
+            <h3>Morning Speakers</h3>
+            <span>Chair: Jiadong Yu</span>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/brian-sheil.png" alt="Brian Sheil">
+              <div class="card-body">
+                <h3>Brian Sheil</h3>
+                <p class="position">Professor</p>
+                <p class="affiliation">University of Cambridge</p>
+                <span class="topic-pill">Physical AI</span>
+                <p>Physics-first AI and trustworthy digital twins for infrastructure.</p>
+                <button class="modal-button" type="button" data-modal-target="brian-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/junwei-liang.jpg" alt="Junwei Liang">
+              <div class="card-body">
+                <h3>Junwei Liang</h3>
+                <p class="position">Assistant Professor</p>
+                <p class="affiliation">HKUST(GZ)</p>
+                <span class="topic-pill">Robotics</span>
+                <p>Computer vision, video analytics and AI technologies for social good.</p>
+                <button class="modal-button" type="button" data-modal-target="junwei-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/guangming-wang.png" alt="Guangming Wang">
+              <div class="card-body">
+                <h3>Guangming Wang</h3>
+                <p class="position">Research Associate</p>
+                <p class="affiliation">University of Cambridge</p>
+                <span class="topic-pill">World model</span>
+                <p>Robotics, embodied intelligence and generative models for the built environment.</p>
+                <button class="modal-button" type="button" data-modal-target="guangming-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/yantao-yu.jpg" alt="Yantao Yu">
+              <div class="card-body">
+                <h3>Yantao Yu</h3>
+                <p class="position">Assistant Professor</p>
+                <p class="affiliation">HKUST</p>
+                <span class="topic-pill">Human-Robot Interaction</span>
+                <p>Construction robotics, safety and human-centered intelligent construction.</p>
+                <button class="modal-button" type="button" data-modal-target="yantao-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/yixiong-jing.png" alt="Yixiong Jing">
+              <div class="card-body">
+                <h3>Yixiong Jing</h3>
+                <p class="position">Research Associate</p>
+                <p class="affiliation">University of Cambridge</p>
+                <span class="topic-pill">Physical interaction modeling</span>
+                <p>Deep learning for bridge geometry, monitoring and infrastructure behavior.</p>
+                <button class="modal-button" type="button" data-modal-target="yixiong-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="speaker-session">
+          <div class="speaker-session-head">
+            <h3>Afternoon Speakers</h3>
+            <span>Chair: Yantao Yu</span>
+          </div>
+          <div class="card-grid">
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/xinhu-zheng.png" alt="Xinhu Zheng">
+              <div class="card-body">
+                <h3>Xinhu Zheng</h3>
+                <p class="position">Assistant Professor</p>
+                <p class="affiliation">HKUST(GZ)</p>
+                <span class="topic-pill">Embodied AI</span>
+                <p>Multi-agent information fusion and multimodal data analysis for intelligent systems.</p>
+                <button class="modal-button" type="button" data-modal-target="xinhu-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/olaf-wysocki.png" alt="Olaf Wysocki">
+              <div class="card-body">
+                <h3>Olaf Wysocki</h3>
+                <p class="position">Assistant Research Professor</p>
+                <p class="affiliation">University of Cambridge</p>
+                <span class="topic-pill">Computer Vision</span>
+                <p>3D reconstruction, semantic segmentation and urban digital twins.</p>
+                <button class="modal-button" type="button" data-modal-target="olaf-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/rushi-dai.jpg" alt="Rushi Dai">
+              <div class="card-body">
+                <h3>Rushi Dai</h3>
+                <p class="position">Assistant Professor</p>
+                <p class="affiliation">HKUST(GZ)</p>
+                <span class="topic-pill">Digital Twin</span>
+                <p>Digital construction, human-robot collaboration and robotic fabrication.</p>
+                <button class="modal-button" type="button" data-modal-target="rushi-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/jiadong-yu.png" alt="Jiadong Yu">
+              <div class="card-body">
+                <h3>Jiadong Yu</h3>
+                <p class="position">Assistant Professor</p>
+                <p class="affiliation">HKUST(GZ)</p>
+                <span class="topic-pill">Multi-agent collaboration</span>
+                <p>MARL, multi-agent systems, edge intelligence and digital twins.</p>
+                <button class="modal-button" type="button" data-modal-target="jiadong-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <img class="speaker-photo" src="assets/plus-seminar/haibing-wu.png" alt="Haibing Wu">
+              <div class="card-body">
+                <h3>Haibing Wu</h3>
+                <p class="position">PhD Student</p>
+                <p class="affiliation">University of Cambridge</p>
+                <span class="topic-pill">Electromagnetic physical AI</span>
+                <p>PhD research at Cambridge around smart infrastructure and physical AI.</p>
+                <button class="modal-button" type="button" data-modal-target="haibing-modal">Read bio <i class="bi bi-arrow-right"></i></button>
+              </div>
+            </article>
+            <article class="card">
+              <div class="speaker-photo" aria-hidden="true" style="display:grid;place-items:center;color:#0e8a8a;font-size:2.8rem;"><i class="bi bi-building"></i></div>
+              <div class="card-body">
+                <h3>Industry Sharing</h3>
+                <p class="affiliation">51 Company</p>
+                <span class="topic-pill">To be confirmed</span>
+                <p>Company name, speaker and logo can be added once confirmed.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="agenda">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="label">Program</p>
+          <h2>Tentative agenda</h2>
+          <p>Each invited talk is scheduled for 20 minutes plus 5 minutes of Q&amp;A. Times remain tentative and can be adjusted once the final local arrangements are confirmed.</p>
+        </div>
+        <div class="agenda">
+          <div class="session">
+            <div class="session-title">Morning Session <span>Chair: Jiadong Yu</span></div>
+            <div class="agenda-row"><div class="slot">08:45-09:00</div><div class="agenda-topic">Registration</div><div class="who">All participants</div></div>
+            <div class="agenda-row"><div class="slot">09:00-09:10</div><div class="agenda-topic">Welcome &amp; Opening Session</div><div class="who">Chairs and organizing team</div></div>
+            <div class="agenda-row"><div class="slot">09:10-09:35</div><div class="agenda-topic">Brian Sheil</div><div class="who">University of Cambridge</div></div>
+            <div class="agenda-row"><div class="slot">09:35-10:00</div><div class="agenda-topic">Junwei Liang</div><div class="who">HKUST(GZ)</div></div>
+            <div class="agenda-row"><div class="slot">10:00-10:25</div><div class="agenda-topic">Guangming Wang</div><div class="who">University of Cambridge</div></div>
+            <div class="agenda-row"><div class="slot">10:25-10:55</div><div class="agenda-topic">Coffee Break</div><div class="who">Posters, networking &amp; collaboration discussion</div></div>
+            <div class="agenda-row"><div class="slot">10:55-11:20</div><div class="agenda-topic">Yantao Yu</div><div class="who">HKUST</div></div>
+            <div class="agenda-row"><div class="slot">11:20-11:45</div><div class="agenda-topic">Yixiong Jing</div><div class="who">University of Cambridge</div></div>
+          </div>
+          <div class="session">
+            <div class="session-title">Lunch Session <span>Lunch + poster exchange</span></div>
+            <div class="agenda-row"><div class="slot">11:45-13:15</div><div class="agenda-topic">Lunch + Poster Session</div><div class="who">10 posters, networking &amp; collaboration discussion</div></div>
+          </div>
+          <div class="session">
+            <div class="session-title">Afternoon Session <span>Chair: Yantao Yu</span></div>
+            <div class="agenda-row"><div class="slot">13:15-13:20</div><div class="agenda-topic">Afternoon Opening</div><div class="who">Chair: Yantao Yu</div></div>
+            <div class="agenda-row"><div class="slot">13:20-13:45</div><div class="agenda-topic">Xinhu Zheng</div><div class="who">HKUST(GZ)</div></div>
+            <div class="agenda-row"><div class="slot">13:45-14:10</div><div class="agenda-topic">Olaf Wysocki</div><div class="who">University of Cambridge</div></div>
+            <div class="agenda-row"><div class="slot">14:10-14:35</div><div class="agenda-topic">Rushi Dai</div><div class="who">HKUST(GZ)</div></div>
+            <div class="agenda-row"><div class="slot">14:35-15:05</div><div class="agenda-topic">Coffee Break</div><div class="who">Posters, networking &amp; collaboration discussion</div></div>
+            <div class="agenda-row"><div class="slot">15:05-15:30</div><div class="agenda-topic">Jiadong Yu</div><div class="who">HKUST(GZ)</div></div>
+            <div class="agenda-row"><div class="slot">15:30-15:55</div><div class="agenda-topic">Haibing Wu</div><div class="who">University of Cambridge</div></div>
+            <div class="agenda-row"><div class="slot">15:55-16:20</div><div class="agenda-topic">Industry Sharing</div><div class="who">51 Company, TBC</div></div>
+            <div class="agenda-row"><div class="slot">16:20-16:30</div><div class="agenda-topic">Closing Session</div><div class="who">Chairs and organizing team</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="poster">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="label">Poster Session</p>
+          <h2>Call for Posters</h2>
+          <p>The seminar includes poster moments during lunch and coffee breaks for early-stage ideas, ongoing work and collaboration discussion.</p>
+        </div>
+        <div class="info-grid">
+          <div class="panel">
+            <h3>Poster Session</h3>
+            <p>We invite up to <strong>10 posters</strong> related to physical AI, multi-robot systems, intelligent construction, digital twins, embodied AI, multi-agent collaboration and adjacent topics.</p>
+            <p>Please contact <strong>Mr. Jiale Li</strong> at <a href="mailto:jli022@connect.hkust-gz.edu.cn">jli022@connect.hkust-gz.edu.cn</a> for poster submission and coordination.</p>
+          </div>
+          <div class="icon-list">
+            <div class="icon-item"><i class="bi bi-easel2"></i><div><strong>10 Posters</strong><span>Selected posters will be displayed during lunch and coffee breaks.</span></div></div>
+            <div class="icon-item"><i class="bi bi-people"></i><div><strong>Discussion</strong><span>Use the poster time for networking and collaboration planning.</span></div></div>
+            <div class="icon-item"><i class="bi bi-envelope"></i><div><strong>CFP Contact</strong><span>Mr. Jiale Li: jli022@connect.hkust-gz.edu.cn</span></div></div>
+            <div class="icon-item"><i class="bi bi-clock-history"></i><div><strong>Poster Timing</strong><span>Poster exchange is planned around lunch, coffee breaks and open networking time.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="venue">
+      <div class="section-inner">
+        <div class="section-heading">
+          <p class="label">Venue</p>
+          <h2>E1, 4th Floor, DOIT Lab</h2>
+          <p>The event is planned as an in-person seminar at HKUST(GZ), Nansha, Guangzhou.</p>
+        </div>
+        <div class="info-grid">
+          <div class="panel">
+            <img class="venue-image" src="assets/plus-seminar/hkustgz-campus.webp" alt="HKUST(GZ) campus">
+            <h3>Venue</h3>
+            <p>E1, 4th Floor, DOIT Lab, HKUST(GZ), 1st Duxue Road, Nansha, Guangzhou.</p>
+          </div>
+          <div class="panel">
+            <img class="venue-image map" src="assets/plus-seminar/hkustgz-map.jpeg" alt="HKUST(GZ) campus map">
+            <h3>Contacts</h3>
+            <p>Jiadong Yu: <a href="mailto:jiadongyu@hkust-gz.edu.cn">jiadongyu@hkust-gz.edu.cn</a></p>
+            <p>Yantao Yu: <a href="mailto:ceyantao@ust.hk">ceyantao@ust.hk</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <strong>PLUS Seminar 2026</strong> | Agents in Collaboration: Physical AI and the Future of Multi-Robot Systems
+    <small>Venue: E1, 4th Floor, DOIT Lab, HKUST(GZ), 1st Duxue Road, Nansha, Guangzhou. Contacts: jiadongyu@hkust-gz.edu.cn; ceyantao@ust.hk.</small>
+  </footer>
+
+  <dialog class="modal" id="brian-modal"><div class="modal-shell"><div class="modal-head"><h2>Brian Sheil</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Physical AI</p><h3>Bio</h3><p>Brian Sheil is Laing O'Rourke Associate Professor in Construction Engineering at the University of Cambridge and Director of the Centre for Smart Infrastructure and Construction. His work puts physics first in developing trustworthy AI for infrastructure, including digital twins for underground assets, physics-informed learning, computer vision, multimodal sensing and multi-scale simulation.</p></div></div></dialog>
+  <dialog class="modal" id="junwei-modal"><div class="modal-shell"><div class="modal-head"><h2>Junwei Liang</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Robotics</p><h3>Bio</h3><p>Junwei Liang is an Assistant Professor at HKUST(GZ). He previously worked as a senior researcher at Tencent Youtu Lab and received his PhD from Carnegie Mellon University. His research interests include human trajectory forecasting, action recognition, large-scale computer vision and video analytics.</p></div></div></dialog>
+  <dialog class="modal" id="guangming-modal"><div class="modal-shell"><div class="modal-head"><h2>Guangming Wang</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>World model</p><h3>Bio</h3><p>Guangming Wang is a Research Associate at the University of Cambridge. His work is connected to robotics, embodied intelligence, world models, generative models, infrastructure health and cross-disciplinary applications in the built environment.</p></div></div></dialog>
+  <dialog class="modal" id="yantao-modal"><div class="modal-shell"><div class="modal-head"><h2>Yantao Yu</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Human-Robot Interaction</p><h3>Bio</h3><p>Yantao Yu is an Associate Professor in the Department of Civil and Environmental Engineering at HKUST. His research interests include construction safety, construction robotics and BIM reconstruction. He directs the Human-Centered Intelligent Construction Lab.</p></div></div></dialog>
+  <dialog class="modal" id="yixiong-modal"><div class="modal-shell"><div class="modal-head"><h2>Yixiong Jing</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Physical interaction modeling</p><h3>Bio</h3><p>Yixiong Jing is listed as a Research Associate at Cambridge CSIC. His background spans civil engineering and deep learning applications for bridge engineering, geometry generation, displacement monitoring and strain monitoring.</p></div></div></dialog>
+  <dialog class="modal" id="xinhu-modal"><div class="modal-shell"><div class="modal-head"><h2>Xinhu Zheng</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Embodied AI</p><h3>Bio</h3><p>Xinhu Zheng is an Assistant Professor at HKUST(GZ). His research interests include intelligent transportation systems, autonomous driving, environmental perception, connected intelligence and multimodal data fusion.</p></div></div></dialog>
+  <dialog class="modal" id="olaf-modal"><div class="modal-shell"><div class="modal-head"><h2>Olaf Wysocki</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Computer Vision</p><h3>Bio</h3><p>Olaf Wysocki is an Assistant Research Professor at the University of Cambridge and leads CV4DT. His research includes 3D semantic reconstruction, 3D semantic segmentation, 3D building models, automated driving virtual testbeds and urban digital twins.</p></div></div></dialog>
+  <dialog class="modal" id="rushi-modal"><div class="modal-shell"><div class="modal-head"><h2>Rushi Dai</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Digital Twin</p><h3>Bio</h3><p>Rushi Dai will join HKUST(GZ) as an Assistant Professor. Her work focuses on digital twins, human-robot collaboration, robotic fabrication, gamification in intelligent construction and generative AI for 3D scene generation.</p></div></div></dialog>
+  <dialog class="modal" id="jiadong-modal"><div class="modal-shell"><div class="modal-head"><h2>Jiadong Yu</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Multi-agent collaboration</p><h3>Bio</h3><p>Jiadong Yu is an Assistant Professor in the IoT Thrust with a joint appointment in AI Thrust at HKUST(GZ), and an Affiliated Assistant Professor at HKUST. Her research focuses on multi-agent reinforcement learning, multi-agent systems, edge intelligence and digital twins.</p></div></div></dialog>
+  <dialog class="modal" id="haibing-modal"><div class="modal-shell"><div class="modal-head"><h2>Haibing Wu</h2><button class="modal-close" type="button" data-modal-close aria-label="Close"><i class="bi bi-x-lg"></i></button></div><div class="modal-body"><h3>Topic</h3><p>Electromagnetic physical AI</p><h3>Bio</h3><p>Haibing Wu is listed as a PhD student at the University of Cambridge and is connected with Cambridge CSIC research in smart infrastructure.</p></div></div></dialog>
+
+  <script>
+    document.querySelectorAll("[data-modal-target]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const modal = document.getElementById(button.dataset.modalTarget);
+        if (modal && typeof modal.showModal === "function") modal.showModal();
+      });
+    });
+
+    document.querySelectorAll("[data-modal-close]").forEach((button) => {
+      button.addEventListener("click", () => button.closest("dialog")?.close());
+    });
+
+    document.querySelectorAll(".modal").forEach((modal) => {
+      modal.addEventListener("click", (event) => {
+        if (event.target === modal) modal.close();
+      });
+    });
+  </script>
+</body>
+</html>
