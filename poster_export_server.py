@@ -130,7 +130,7 @@ class PosterExportHandler(SimpleHTTPRequestHandler):
                 screenshot_path = temp_path / "poster-full.png"
                 png_path = temp_path / "poster.png"
                 profile_path = temp_path / "chrome-profile"
-                target_url = f"http://127.0.0.1:{self.server.server_port}/poster.html"
+                target_url = f"http://127.0.0.1:{self.server.server_port}/poster.html?export=1"
                 crop_x = 0
                 crop_y = 0
 

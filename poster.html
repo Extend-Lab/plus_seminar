@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>PLUS Seminar 2026 Poster</title>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<script>
+  if (new URLSearchParams(window.location.search).has("export")) {
+    document.documentElement.classList.add("export-mode");
+  }
+</script>
 <style>
   :root {
     --ink: #122129;
@@ -53,6 +58,10 @@
 
   .print-button:hover {
     transform: translateY(-1px);
+  }
+
+  .export-mode .print-button {
+    display: none;
   }
 
   .poster-sheet {
@@ -392,7 +401,7 @@
 
   .poster-call {
     display: grid;
-    grid-template-columns: 27mm 1fr 57mm;
+    grid-template-columns: 27mm 1fr 41mm 57mm;
     gap: 2mm;
     align-items: center;
     margin-top: 1.6mm;
@@ -496,7 +505,7 @@
         <div class="speaker"><img src="assets/plus-seminar/rushi-dai.jpg" alt="Rushi Dai"><strong>Rushi Dai</strong><span>HKUST(GZ)</span></div>
         <div class="speaker"><img src="assets/plus-seminar/jiadong-yu.png" alt="Jiadong Yu"><strong>Jiadong Yu</strong><span>HKUST(GZ)</span></div>
         <div class="speaker"><img src="assets/plus-seminar/haibing-wu.png" alt="Haibing Wu"><strong>Haibing Wu</strong><span>University of Cambridge</span></div>
-        <div class="speaker"><div class="placeholder"><i class="bi bi-building"></i></div><strong>Industry Sharing</strong><span>51 Company, TBC</span></div>
+        <div class="speaker"><img src="assets/plus-seminar/yee-locke.jpg" alt="Yee Locke" style="object-position:center 18%;"><strong>Yee Locke</strong><span>51AES / 51WORLD</span></div>
       </section>
 
       <section class="agenda-block" aria-label="Tentative agenda">
@@ -521,7 +530,7 @@
           <div class="agenda-row"><div>14:35</div><div>Jiadong Yu</div><div>HKUST(GZ)</div></div>
           <div class="agenda-row"><div>15:00</div><div>Coffee Break</div><div>Posters, networking &amp; collaboration discussion</div></div>
           <div class="agenda-row"><div>15:30</div><div>Haibing Wu</div><div>University of Cambridge</div></div>
-          <div class="agenda-row"><div>15:55</div><div>Industry Sharing</div><div>51 Company, TBC</div></div>
+          <div class="agenda-row"><div>15:55</div><div>Yee Locke</div><div>51AES / 51WORLD</div></div>
           <div class="agenda-row"><div>16:20</div><div>Closing Session</div><div>Chairs and organizing team</div></div>
           <div class="note">Each talk includes 20 min presentation + 5 min Q&amp;A. Times are tentative.</div>
         </div>
@@ -529,6 +538,7 @@
       <section class="poster-call" aria-label="Call for posters">
         <strong>10 Posters</strong>
         <span>Call for posters: submit research for lunch and coffee-break discussion.</span>
+        <span><b>Deadline:</b><br>27 July 2026</span>
         <span><b>CFP Contact:</b> Mr. Jiale Li<br>jli022@connect.hkust-gz.edu.cn</span>
       </section>
     </div>
